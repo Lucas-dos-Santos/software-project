@@ -13,12 +13,14 @@
           <span>Projetos</span>
         <% end %>
       </li>
-      <li >
-        <%= link_to activities_path do %>
-          <i class="fa fa-tasks"></i>
-          <span>Atividades</span>
-        <% end %>
-      </li>
+      <% if !@projects_all.empty? %>
+        <li >
+          <%= link_to activities_path do %>
+            <i class="fa fa-tasks"></i>
+            <span>Atividades</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </aside>
