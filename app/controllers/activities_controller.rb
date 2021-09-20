@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+        format.html { redirect_to @activity.project, notice: 'Atividade criada com sucesso!' }
         format.json { render :show, status: :created, location: @activity }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,7 +36,8 @@ class ActivitiesController < ApplicationController
 
   # PATCH/PUT /activities/1 or /activities/1.json
   def update
-    redirect_to root_path if @activity.update(finished: @activity.toggle(:finished))
+    @activity.toggle!(:finished)
+    redirect_to project_path(@activity.project.id)
   end
 
   # DELETE /activities/1 or /activities/1.json

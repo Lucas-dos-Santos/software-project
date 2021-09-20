@@ -45,9 +45,16 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1 or /projects/1.json
   def destroy
     @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-      format.json { head :no_content }
+    flash[:notice] = 'Projeto apagado com sucesso!'
+    redirect_to projetos_path
+  end
+
+  def search
+    @query = params[:query]
+    if @query.nil?
+      flash.now[:alert] = 'Campo em branco'
+    else
+      @projects = Project.where('name like ?', "%#{@query}%").order(:name)
     end
   end
 

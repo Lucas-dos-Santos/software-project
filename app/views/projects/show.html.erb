@@ -8,7 +8,7 @@
         <li><i class="fa fa-home mx-2"></i>Home</li>
         <li><i class="fa fa-laptop me-2"></i><%= @project.name %></li>
         <%= link_to new_project_path do %>
-          <li class="btn btn-outline-success ms-3"><i class="fa fa-plus me-2 text-success"></i>Novo projeto</li>
+          <li class="btn btn-outline-success ms-3 btn-lg"><i class="fa fa-plus me-2 text-success"></i>Novo projeto</li>
         <% end %>
       </ol>
     </div>
@@ -58,7 +58,9 @@
     <tbody>
       <% @project.activities.each do |activity| %>
         <tr>
-          <td><%= activity.name_activity %></td>
+          <td>
+            <%= activity.name_activity %>
+          </td>
           <td><%= activity.start_date.strftime("%d-%m-%Y")  %></td>
           <td><%= activity.end_date.strftime("%d-%m-%Y") %></td>
           <td>
@@ -66,10 +68,10 @@
           </td>
           <td>
             <%= link_to  activity_path(activity), method: :put do %>
-              <i class="fa fa-exchange-alt mx-3"></i>
+              <i class="fa fa-exchange-alt mx-3 fs-3"></i>
             <% end %>
             <%= link_to activity, method: :delete, data: {confirm: "Tem certeza?"} do %>
-              <i class="fa fa-window-close text-danger"></i>
+              <i class="fa fa-window-close text-danger fs-3"></i>
             <% end %>
           </td>
         </tr>
