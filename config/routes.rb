@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root 'welcome#teste'
-  get 'teste', to: 'welcome#teste'
+  resources :projects
+  resources :activities
+  root 'pages#dashboard'
+  get 'projetos', to: 'pages#projects'
+  get 'dashboard', to: 'pages#dashboard'
 end

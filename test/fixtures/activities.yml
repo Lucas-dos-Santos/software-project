@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  name_activity: MyString
+  start_date: 2021-09-20 11:04:47
+  end_date: 2021-09-20 11:04:47
+  finished: false
+
+two:
+  project: two
+  name_activity: MyString
+  start_date: 2021-09-20 11:04:47
+  end_date: 2021-09-20 11:04:47
+  finished: false
