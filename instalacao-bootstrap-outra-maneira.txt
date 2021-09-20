@@ -1,0 +1,8 @@
+yarn add bootstrap jquery popper.js
+
+rails webpacker:install
+
+ app/assets/stylesheets/application.css
+ *= require bootstrap
+*= require_tree .
+*= require_self
