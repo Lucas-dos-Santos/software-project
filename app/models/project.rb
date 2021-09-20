@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   has_many :activities, dependent: :destroy
-  validates :name, uniqueness: { case_sensitive: false }
+  validates :name, uniqueness: { case_sensitive: false }, length: { minimum: 5 }
   validates :name, :start_date, :end_date, presence: true
   validates :end_date,
             date: { after: :start_date }
