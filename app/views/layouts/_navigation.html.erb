@@ -1,0 +1,26 @@
+<header class="header dark-bg">
+  <div class="d-flex align-items-center ms-4 h-100">
+    <div class="pointer">
+      <div class="" onclick="button_toogle2()">
+        <i class="fa fa-align-justify hover fs-1"></i>
+      </div>
+    </div>
+    <div class="me-4 ms-4">
+      <%= link_to "Euax", root_path, class: "navbar-brand  text-danger" %>
+    </div>
+    <div class="">
+      <%= form_with url: "/search", class: "search-row ms-4", method: :get do |form| %>
+        <%= form.text_field :query, placeholder: 'Nome do projeto...' %>
+        <%= form.button   do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</header>
+<script>
+  function button_toogle2 ()  {
+    document.getElementById("sidebar").classList.toggle('sidenone')
+    document.getElementById("main-content").classList.toggle('main-total')
+   };
+</script>

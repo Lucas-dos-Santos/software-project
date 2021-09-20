@@ -1,19 +1,75 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @project.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @project.end_date %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<section class="wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="page-header">
+      </h3>
+      <%=  render 'layouts/messages' %>
+      <ol class="breadcrumb">
+        <li><i class="fa fa-home mx-2"></i>Home</li>
+        <li><i class="fa fa-laptop me-2"></i><%= @project.name %></li>
+      </ol>
+    </div>
+  </div>
+  <table class="table table-hover text-dark mb-0 bg-white ">
+    <thead>
+      <tr>
+        <th>Nome do Projeto</th>
+        <th>Data de Inicio</th>
+        <th>Data de Termino</th>
+        <th>%Completo</th>
+        <th>Atrasado?</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @project.name %></td>
+        <td><%= @project.start_date.strftime("%d-%m-%Y")  %></td>
+        <td><%= @project.end_date.strftime("%d-%m-%Y") %></td>
+        <td>
+          <% if @project.activities.count > 0 %>
+            <%=  @project.porcentage  %>%
+          <% else %>
+            0%
+          <% end %>
+        </td>
+        <td>
+          <%= @project.late? ? "Sim" : "Não" %>
+        </td>
+        <td>
+          <%= link_to "Apagar", @project, method: :delete, class: "btn  btn-lg btn-outline-danger", data: {confirm: "Tem certeza?"} %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-hover text-dark mb-0 bg-white ">
+    <thead>
+      <tr>
+        <th>Nome da Atividade</th>
+        <th>Data de Inicio</th>
+        <th>Data de Termino</th>
+        <th>Finalizada?</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.activities.each do |activity| %>
+        <tr>
+          <td><%= activity.name_activity %></td>
+          <td><%= activity.start_date.strftime("%d-%m-%Y")  %></td>
+          <td><%= activity.end_date.strftime("%d-%m-%Y") %></td>
+          <td>
+            <%= activity.finished ? "Sim" : "Não" %>
+          </td>
+          <td>
+            <%= link_to  activity_path(activity), method: :put do %>
+              <i class="fa fa-exchange-alt mx-3"></i>
+            <% end %>
+            <%= link_to activity, method: :delete, data: {confirm: "Tem certeza?"} do %>
+              <i class="fa fa-window-close text-danger"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

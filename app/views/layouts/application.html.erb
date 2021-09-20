@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SoftwareGestao</title>
+    <title>Projeto - Gestao</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-mutate-approach="sync"></script>
   </head>
-  <body>
+</head>
+<body id="container">
+  <%= render 'layouts/navigation' %>
+  <%= render 'layouts/aside' %>
+  <section id="main-content">
     <%= yield %>
-  </body>
+  </section>
+</body>
 </html>

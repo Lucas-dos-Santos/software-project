@@ -1,0 +1,34 @@
+<section class="wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="page-header">
+      </h3>
+      <ol class="breadcrumb">
+        <li><i class="fa fa-home mx-2"></i>Home</li>
+        <li><i class="fa fa-laptop me-2"></i>Dashboard</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row row-cols-2">
+    <div class="col row-chart">
+      <div class="myChart">
+        <h4 class="text-center fs-3">Projetos</h4>
+        <%= pie_chart([
+  {name: "Total", data: @total_projects},
+  {name: "Atrasados", data: @delayed_projects},
+  {name: "Em dia", data: @in_day}
+], legend: "left", theme: "rainbow") %>
+      </div>
+    </div>
+    <div class="col row-chart">
+      <div class="myChart">
+        <h4 class="text-center fs-3">Atividades</h4>
+        <%= pie_chart([
+  {name: "Total", data: @total_activities},
+  {name: "Finalizados", data: @total_finished},
+  {name: "Em aberto", data: @total_open}
+], legend: "left") %>
+      </div>
+    </div>
+  </div>
+</section>
