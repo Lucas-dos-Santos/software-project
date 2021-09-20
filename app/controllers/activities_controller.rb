@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
 
   # POST /activities or /activities.json
   def create
+    @projects = Project.all
     @activity = Activity.new(activity_params)
 
     respond_to do |format|

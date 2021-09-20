@@ -1,5 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :project
+  validates :name_activity, uniqueness: { case_sensitive: false }
   validates :project_id, :name_activity, :start_date, :end_date, presence: true
   validates :end_date,
             date: { after: :start_date }
